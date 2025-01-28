@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Weather API</title>
+       <script src="weather.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  </head>
+  <body>
+      <h3>Enter city name:</h3>
+      <div><input type="text" id="City"></div>
+      <button onclick={fetchWeather()}>search</button>
+      <h3 id="msg" style="color: red;"></h3>
+      <canvas id="myChart" style="width:100%; max-width:700px;"></canvas>
+      
+  </body>
+  </html>

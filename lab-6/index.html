@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Usage Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #memory-info { white-space: pre; }
+    </style>
+</head>
+<body>
+    <h1>Memory Usage Tracker</h1>
+    <div id="memory-info"></div>
+
+    <script>
+        function displayMemoryUsage() {
+            if (performance.memory) {
+                const totalMemory = performance.memory.jsHeapSizeLimit;
+                const usedMemory = performance.memory.usedJSHeapSize;
+                const freeMemory = totalMemory - usedMemory;
+                const freeMemoryPercentage = (freeMemory / totalMemory) * 100;
+
+                const memoryInfo = `
+                    Total Memory: ${(totalMemory / (1024 ** 2)).toFixed(2)} MB
+                    Used Memory: ${(usedMemory / (1024 ** 2)).toFixed(2)} MB
+                    Free Memory: ${(freeMemory / (1024 ** 2)).toFixed(2)} MB
+                    Free Memory Percentage: ${freeMemoryPercentage.toFixed(2)}%
+                `;
+                
+                document.getElementById('memory-info').textContent = memoryInfo;
+            } else {
+                document.getElementById('memory-info').textContent = 'Memory info is not available in this browser.';
+            }
+        }
+
+        setInterval(displayMemoryUsage, 5000); // Update every 5 seconds
+    </script>
+</body>
+</html>
